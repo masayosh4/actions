@@ -1,0 +1,21 @@
+name: Push Stable Branch
+on:
+  pull_request:
+    types: [closed] 
+    branches:
+      - stable
+jobs:
+  report:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull request merged
+      - uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Pull Request
+        uses: vsoch/pull-request-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH_PREFIX: "stable"
+          PULL_REQUEST_BRANCH: "master"
