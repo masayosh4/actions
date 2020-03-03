@@ -11,6 +11,7 @@ jobs:
     steps:
       - name: Pull request merged
         uses: actions/checkout@v2
+        with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Reset promotion branch
         run: |
