@@ -17,7 +17,7 @@ jobs:
       - name: Reset promotion branch
         run: |
           git fetch --no-tags --prune --depth=1 origin +refs/heads/stable:refs/remotes/origin/stable
-          git checkout -b stable-to-master origin/stable
+          git checkout -b stable origin/stable
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v2
         with:
